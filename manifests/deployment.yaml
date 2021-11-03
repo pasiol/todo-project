@@ -7,11 +7,11 @@ spec:
   selector:
   matchLabels:
     app: todo-project
-    template:
-  metadata:
-    labels:
-    app: todo-project
-  spec:
-    containers:
-    - name: todo-project
-      image: pasiol/todo-project@sha256:b4b8c31d840f1eae9b02d7ec5defca32afcb8bf56bca7a4ee539baaf1509eed2
+  template:
+    metadata:
+      labels:
+      app: todo-project
+    spec:
+      containers:
+      - name: todo-project
+        image: pasiol/todo-project@sha256:b4b8c31d840f1eae9b02d7ec5defca32afcb8bf56bca7a4ee539baaf1509eed2
