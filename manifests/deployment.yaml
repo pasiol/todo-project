@@ -5,8 +5,8 @@ metadata:
 spec:
   replicas: 1
   selector:
-  matchLabels:
-    app: todo-project
+    matchLabels:
+      app: todo-project
   template:
     metadata:
       labels:
