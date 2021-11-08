@@ -12,6 +12,16 @@ spec:
       labels:
         app: todo-project
     spec:
+      volumes:
+        - name: static-files
+          persistentVolumeClaim:
+            claimName: todo-project-claim
       containers:
       - name: todo-project
         image: pasiol/todo-project@sha256:b4b8c31d840f1eae9b02d7ec5defca32afcb8bf56bca7a4ee539baaf1509eed2
+        volumeMounts:
+          - mountPath: /var/app/static
+            name: static-files
+        env:
+          - name: APP_PORT
+            value: "3000"
