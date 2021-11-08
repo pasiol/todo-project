@@ -8,6 +8,6 @@ spec:
   selector:
     app: todo-project # This is the app as declared in the deployment.
   ports:
-    - port: 80  #This is a port that is available to the cluster
+    - port: 3000  #This is a port that is available to the cluster
       protocol: TCP
       targetPort: 3000
