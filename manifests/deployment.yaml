@@ -18,7 +18,7 @@ spec:
             claimName: todo-project-claim
       containers:
       - name: todo-project
-        image: pasiol/todo-project@sha256:cef88647d5ae4e4a7933bc9e97faaaabc1ade6a445c6c217f756fe4323b403c4
+        image: pasiol/todo-project@sha256:f3c5236886e4340ec1c4e3ca7b121ccbd1eb404089f54f9a0e435c67c057e29d
         volumeMounts:
           - mountPath: /var/app/static
             name: static-files
