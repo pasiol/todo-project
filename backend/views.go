@@ -22,7 +22,7 @@ func respondWithJSON(w http.ResponseWriter, code int, payload interface{}) {
 	if err != nil {
 		log.Printf("writing response failed: %s", err)
 	}
-	log.Printf("response bytes %d", bytes)
+	log.Printf("response bytes %d, %v", bytes, payload)
 }
 
 func (a *App) getTodos(w http.ResponseWriter, _ *http.Request) {

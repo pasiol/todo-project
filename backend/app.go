@@ -30,18 +30,18 @@ func (a *App) initializeRoutes() {
 
 func (a *App) Run() {
 	corsOptions := cors.New(cors.Options{
-		AllowedOrigins:   []string{os.Getenv("ALLOWED_ORIGINS")},
-		AllowCredentials: true,
-		AllowedMethods:   []string{http.MethodGet, http.MethodOptions, http.MethodConnect, http.MethodPost},
-		Debug:            true,
+		AllowedOrigins: []string{os.Getenv("ALLOWED_ORIGINS")},
+		AllowedMethods: []string{http.MethodGet, http.MethodOptions, http.MethodConnect, http.MethodPost},
+		Debug:          true,
 	})
-
+	address := fmt.Sprintf("0.0.0.0:%s", os.Getenv("APP_PORT"))
 	server := &http.Server{
-		Addr:    fmt.Sprintf("0.0.0.0:%s", os.Getenv("APP_PORT")),
+		Addr:    address,
 		Handler: corsOptions.Handler(a.Router),
 	}
 
-	log.Printf("starting REST-server 0.0.0.0:%s.", os.Getenv("APP_PORT"))
+	log.Printf("starting REST-backend in %s.", address)
 	log.Printf("Version: %s , build: %s", Version, Build)
+	log.Printf("Allowed origins: %s", os.Getenv("ALLOWED_ORIGINS"))
 	log.Fatal(server.ListenAndServe())
 }
