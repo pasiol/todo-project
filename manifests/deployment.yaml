@@ -16,19 +16,21 @@ spec:
         - name: static-files
           persistentVolumeClaim:
             claimName: todo-project-claim
+        - name: config
+          configMap:
+            name: web-config
+            items:
+              - key: "web.properties"
+                path: "config.js"
       containers:
-      - name: backend
-        image: pasiol/todo-project-backend@sha256:d5a41e97ddca28e15603f9413fae6e0f53e3d88213cd8401fb0fd68fdaa1dbee
-        env:
-          - name: APP_PORT
-            value: "8888"
-          - name: ALLOWED_ORIGINS
-            value: todo-project:3000
       - name: todo-project
-        image: pasiol/todo-project@sha256:e16129f221b6e047395f6654e3d3ba138323f81b53a228397cf5342ed8b74f70
+        image: pasiol/todo-project@sha256:539eec367720b1b2123cbef67a539d270babcb64ab533c8c0deb6620a0c517d1
         volumeMounts:
-          - mountPath: /var/app/build/static/pv
+          - mountPath: "/var/app/build/static/pv"
             name: static-files
+          - mountPath:  "/var/app/build/static/config.js"
+            name: config
+            subPath: "config.js"
         env:
           - name: APP_PORT
             value: "3000"
