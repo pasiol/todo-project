@@ -2,7 +2,7 @@
 ARG GO_VERSION=1.16
 FROM golang:${GO_VERSION}-alpine AS dev
 
-ENV APP_NAME="todo-project" \
+ENV APP_NAME="static_react_server" \
     APP_PATH="/var/app"
 
 ENV APP_BUILD_NAME="${APP_NAME}"
@@ -24,19 +24,17 @@ RUN go build -ldflags="-s -w" -mod vendor -o ${APP_BUILD_NAME}
 RUN chmod +x ${APP_BUILD_NAME}
 
 FROM debian:10-slim AS prod
-RUN apt update -y && apt install -y curl iproute2
+RUN apt update -y && apt install -y curl iproute2 ca-certificates && \
+    update-ca-certificates
 
 ENV APP_BUILD_PATH="/var/app" \
-    APP_BUILD_NAME="todo-project" \
-    APP_FRONTEND_PATH="/var/app/web" \
-    APP_STATIC_PATH="/var/app/static"
-
+    APP_BUILD_NAME="static_react_server" \
+    APP_FRONTEND_PATH="/var/app/build"
 WORKDIR ${APP_BUILD_PATH}
 
 COPY --from=build ${APP_BUILD_PATH}/${APP_BUILD_NAME} ${APP_BUILD_PATH}/
+COPY build/. ${APP_FRONTEND_PATH}/
+RUN mkdir /var/app/build/static/pv
 
-COPY ./web/ ${APP_FRONTEND_PATH}
-COPY ./static/ ${APP_STATIC_PATH}
-
-ENTRYPOINT ["/var/app/todo-project"]
+ENTRYPOINT ["/var/app/static_react_server"]
 CMD ""
