@@ -6,8 +6,8 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-    app: todo-project # This is the app as declared in the deployment.
+    app: todo-project
   ports:
-    - port: 3000  #This is a port that is available to the cluster
+    - port: 3000
       protocol: TCP
       targetPort: 3000

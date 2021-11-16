@@ -4,4 +4,4 @@ metadata:
   name: web-config
 data:
   web.properties: |
-    window.API_URL= todo-project-backend-svc:8888
+    window.API_URL="http://todo.local";
