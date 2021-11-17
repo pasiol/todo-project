@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name:
     todo-project-svc
+  namespace: todo-project
 spec:
   type: ClusterIP
   selector:

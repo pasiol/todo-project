@@ -2,6 +2,7 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: todo-project-pv
+  namespace: todo-project
 spec:
   storageClassName: manual
   capacity:
