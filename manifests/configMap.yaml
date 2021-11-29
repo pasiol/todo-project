@@ -5,4 +5,4 @@ metadata:
   namespace: todo-project
 data:
   web.properties: |
-    window.API_URL="http://34.88.245.120:8888";
+    window.API_URL="http://api.nomestyle.com:8888";
