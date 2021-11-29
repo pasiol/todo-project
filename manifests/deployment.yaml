@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: todo-project
+  name: todo-project-frontend
   namespace: todo-project
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: todo-project
+      app: todo-project-frontend
   template:
     metadata:
       labels:
-        app: todo-project
+        app: todo-project-frontend
     spec:
       volumes:
         - name: static-files
@@ -24,8 +24,8 @@ spec:
               - key: "web.properties"
                 path: "config.js"
       containers:
-      - name: todo-project
-        image: pasiol/todo-project@sha256:539eec367720b1b2123cbef67a539d270babcb64ab533c8c0deb6620a0c517d1
+      - name: todo-project-frontend
+        image: gcr.io/PROJECT_ID/IMAGE
         volumeMounts:
           - mountPath: "/var/app/build/static/pv"
             name: static-files
