@@ -4,9 +4,8 @@ metadata:
   name: todo-project-claim
   namespace: todo-project
 spec:
-  storageClassName: manual
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 1Gi
+      storage: 100Mi

@@ -5,4 +5,4 @@ metadata:
   namespace: todo-project
 data:
   web.properties: |
-    window.API_URL="http://todo.local";
+    window.API_URL="http://todo-project-backend-svc";
