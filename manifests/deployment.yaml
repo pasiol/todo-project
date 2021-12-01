@@ -35,3 +35,8 @@ spec:
         env:
           - name: APP_PORT
             value: "3000"
+        resources:
+          limits:
+            cpu: "200m"
+            memory: "10Mi"
+
