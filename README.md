@@ -78,7 +78,7 @@ Exercise 3.07
 
 ## Tietokannan valinta projektia varten  <a name="commitmentfi"></a>
 
-Valinta on Postgres, koska tehtävien tekemiseen on käytettävissä rajallisesti aikaan. Osassa 2 backendiin valittiin tietokantayhteyttä varten gorm-kirjasto, jonka avulla tietokannan vaihtaminen on helppoa, mutta gorm ei tue Google Cloud SQL:ää. Tietokannan vaihdoksen takia pitäisi tietokantaa käsittelevät osat kirjoittaa uusiksi. Helpompi olisi valita Postgres-palvelu Googlen tarjonnasta, jos haluisia hyödyntää DbaaS-palvelua.
+Valinta on Postgres, koska tehtävien tekemiseen on käytettävissä rajallisesti aikaan. Osassa 2 backendiin valittiin tietokantayhteyttä varten gorm-kirjasto, jonka avulla tietokannan vaihtaminen on helppoa, mutta gorm ei tue Google Cloud SQL:ää. Tietokannan vaihdoksen takia pitäisi tietokantaa käsittelevät osat kirjoittaa uusiksi. Helpompi olisi valita Postgres-palvelu Googlen tarjonnasta, jos haluaisi hyödyntää DbaaS-palvelua.
 
 https://gorm.io/docs/connecting_to_the_database.html
 
