@@ -3,9 +3,15 @@
 http://dwk.nomestyle.com/
 http://api.nomestyle.com:8888/todos
 
+# Table of Contents
+1. [Tietokanta palveluna vs itse ylläpidettynä](#dbaasfi)
+2. [DBaaS vs DIY](#dbaasen)
+3. [Third Example](#commitmentfi)
+4. [Fourth Example](#commitmenten)
+
 exercise 3.06
 
-### Tietokanta palveluna vs itse ylläpidettynä
+## Tietokanta palveluna vs itse ylläpidettynä <a name="dbaasfi"></a>
 
 Tietokanta palveluna on kehittäjälle helppo ratkaisua. Tällöin ylläpitoon liittyvät tehtävät jää pois ja ne kuuluvat palvelun hintaan. Organisaatio tarvitsee vähemmän resursseja tietokannan ylläpitoon ja varmuuskopiointiin itse ylläpidetyissä tietokannoissa.
 
@@ -35,7 +41,7 @@ Miinukset
 - verkkoinfrastruktuurin on oltava hyvä (koskee myös sähköverkkoa)
 - huomioitava organisaation toiminnan kannalta myös poikkeusolosuhteet, jossa esim. Internetin ja sähköverkon toiminta estyy osittain tai kokonaan
 
-### DBaaS vs DIY
+## DBaaS vs DIY <a name="dbaasen"></a>
 
 A database as a service is an easy solution for a developer. In this case, the tasks related to maintenance are omitted and are included in the price of the service. An organization needs fewer resources to maintain and back up its database on self-maintained databases.
 
@@ -67,3 +73,17 @@ Cons
   Lisätietoja tästä lähdetekstistäLähdeteksti vaaditaan käännöksen lisätietoihin
   Lähetä palautetta
   Sivupaneelit
+
+Exercise 3.07
+
+## Tietokannan valinta projektia varten  <a name="commitmentfi"></a>
+
+Valinta on Postgres, koska tehtävien tekemiseen on käytettävissä rajallisesti aikaan. Osassa 2 backendiin valittiin tietokantayhteyttä varten gorm-kirjasto, jonka avulla tietokannan vaihtaminen on helppoa, mutta gorm ei tue Google Cloud SQL:ää. Tietokannan vaihdoksen takia pitäisi tietokantaa käsittelevät osat kirjoittaa uusiksi. Helpompi olisi valita Postgres-palvelu Googlen tarjonnasta, jos haluisia hyödyntää DbaaS-palvelua.
+
+https://gorm.io/docs/connecting_to_the_database.html
+
+## Commitment <a name="commitmenten"></a>
+
+The choice is Postgres because of the limited time available to complete exercises. In Part 2, a gorm library was selected for the database connection for the backend, making it easy to switch databases, but gorm does not support Google Cloud SQL. Due to the change in the database, the sections dealing with the database should be rewritten. It would be easier to choose Postgres from Google if you want to take advantage of DbaaS.
+
+https://gorm.io/docs/connecting_to_the_database.html
