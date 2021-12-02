@@ -6,8 +6,8 @@ http://api.nomestyle.com:8888/todos
 # Table of Contents
 1. [Tietokanta palveluna vs itse ylläpidettynä](#dbaasfi)
 2. [DBaaS vs DIY](#dbaasen)
-3. [Third Example](#commitmentfi)
-4. [Fourth Example](#commitmenten)
+3. [Tietokannan valinta](#commitmentfi)
+4. [Commitment](#commitmenten)
 
 exercise 3.06
 
