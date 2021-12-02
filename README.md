@@ -49,7 +49,7 @@ If continuous monitoring is not required, eg in a development environment, the d
 
 The cost of the service is cheaper if a price is calculated for the work. In practice, in a period of less than 100e per month, a number of reasonably efficient services suitable for production use are available, which are suitable, for example, for database solutions for medium-sized websites. Often in these services, the database is clustered, which at least cannot be found cheaper in the Prem environment. Geographical decentralization of the service is also possible, which is essential in international services. In principle, the service could be built in a kubernetes environment, for example, but it is more expensive and more prone to technical problems and complexity than the solution offered as a service.
 
-However, the service should be chosen in such a way that it is possible to change service provider in the future, at the lowest possible cost, provided that there are no technical constraints on the use of a particular database. SQL is a more secure solution in this regard than NoSQL-based databases, where the database is significantly more software-dependent than SQL databases.
+However, the service should be chosen in such a way that it is possible to change service provider in the future, at the lowest possible cost, provided that there are no technical constraints on the use of a particular database. SQL is a more secure solution in this respect than NoSQL-based databases, where it is much easier to migrate a database to another SQL database. However, it does not always make sense to use SQL-based databases. The JSON schema of data in particular is complex and variable. The speed of development work is then much faster in NoSQL-based solutions. SQL is better suited for storing standard data, where schema changes are rarely made.
 
 Pros:
 - cost-effectiveness
@@ -70,9 +70,6 @@ Cons
 - vendor locking
 - the network infrastructure must be good (also applies to the electricity network)
 - take into account, from the point of view of the organisation's operations, exceptional circumstances in which, for example, the operation of the Internet and the electricity network is partially or completely blocked;
-  Lisätietoja tästä lähdetekstistäLähdeteksti vaaditaan käännöksen lisätietoihin
-  Lähetä palautetta
-  Sivupaneelit
 
 Exercise 3.07
 
