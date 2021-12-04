@@ -35,6 +35,12 @@ spec:
         env:
           - name: APP_PORT
             value: "3000"
+        readinessProbe:
+          initialDelaySeconds: 60
+          periodSeconds: 10
+          httpGet:
+            path: /health
+            port: 3000
         resources:
           limits:
             cpu: "200m"
