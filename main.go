@@ -38,12 +38,11 @@ func getHealth(w http.ResponseWriter, _ *http.Request) {
 func main() {
 
 	r := mux.NewRouter()
-
+	r.HandleFunc("/health", getHealth).Methods("GET")
 	r.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("/var/app/build/static/"))))
 	r.PathPrefix("/").HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		http.ServeFile(w, r, "/var/app/build/index.html")
 	})
-	r.HandleFunc("/health", getHealth).Methods("GET")
 
 	port := os.Getenv("APP_PORT")
 
