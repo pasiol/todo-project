@@ -19,17 +19,20 @@ func respondWithText(w http.ResponseWriter, code int, payload string) {
 	log.Printf("response bytes %d", bytes)
 }
 
-func getHealth(w http.ResponseWriter, _ *http.Request) {
+func getHealth(w http.ResponseWriter, r *http.Request) {
 	url := fmt.Sprintf("http://%s/health", os.Getenv("APP_PING_PONG_HOST"))
 	response, err := http.Get(url)
 	if err != nil {
+		log.Printf("health failed, from: %s error: %s", r.RemoteAddr, err)
 		respondWithText(w, http.StatusInternalServerError, err.Error())
 		return
 	}
 	if response.StatusCode == 200 {
+		log.Printf("health succeed, from: %s", r.RemoteAddr)
 		respondWithText(w, http.StatusOK, "ok")
 		return
 	} else {
+		log.Printf("health failed, from: %s error: %s", r.RemoteAddr, err)
 		respondWithText(w, http.StatusInternalServerError, "todo service not responding")
 		return
 	}
