@@ -8,6 +8,6 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: todo-project-frontend
-  minReplicas: 1
+  minReplicas: 4
   maxReplicas: 6
   targetCPUUtilizationPercentage: 50
