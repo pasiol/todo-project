@@ -1,0 +1,70 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: todo-project-frontend
+  namespace: exercise305
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: todo-project-frontend
+  strategy:
+    canary:
+      maxUnavailable: 2
+      ScaleDownDelaySeconds: 30
+      steps:
+        - setWeight: 50
+        - pause:
+            duration: 30m
+        - setWeight: 50
+        - pause:
+            duration: 5m
+        - analysis:
+            templates:
+              - templateName: cpu-usage-10m
+  template:
+    metadata:
+      labels:
+        app: todo-project-frontend
+    spec:
+      volumes:
+        - name: static-files
+          persistentVolumeClaim:
+            claimName: todo-project-claim
+        - name: config
+          configMap:
+            name: web-config
+            items:
+              - key: "web.properties"
+                path: "config.js"
+      containers:
+        - name: todo-project-frontend
+          image: pasiol/todo-project:done-button
+          readinessProbe:
+            initialDelaySeconds: 120
+            periodSeconds: 10
+            httpGet:
+              path: /health
+              port: 3000
+          livenessProbe:
+            initialDelaySeconds: 120
+            periodSeconds: 10
+            httpGet:
+              path: /health
+              port: 3000
+          volumeMounts:
+            - mountPath: "/var/app/build/static/pv"
+              name: static-files
+            - mountPath:  "/var/app/build/static/config.js"
+              name: config
+              subPath: "config.js"
+          env:
+            - name: APP_PORT
+              value: "3000"
+            - name: API_URL
+              value: "api.nomestyle.com:8888"
+          resources:
+            limits:
+              cpu: "200m"
+              memory: "10Mi"
+

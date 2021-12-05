@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  name: cpu-usage-10m
+  namespace: exercise405
+spec:
+  metrics:
+    - name: cpu-usage-10m
+      initialDelay: 30s
+      successCondition: result < 0.00065
+      provider:
+        prometheus:
+          address: http://kube-prometheus-stack-1602-prometheus.prometheus.svc.cluster.local:9090
+          query: |
+            scalar(
+              sum(rate(container_cpu_usage_seconds_total{image=~`.*todo-project-frontend.*`,namespace="exercise405"}[10m]))
+            )
