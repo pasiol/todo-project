@@ -20,7 +20,7 @@ func respondWithText(w http.ResponseWriter, code int, payload string) {
 }
 
 func getHealth(w http.ResponseWriter, r *http.Request) {
-	url := fmt.Sprintf("http://%s/health", os.Getenv("APP_PING_PONG_HOST"))
+	url := fmt.Sprintf("http://%s/health", os.Getenv("API_URL"))
 	response, err := http.Get(url)
 	if err != nil {
 		log.Printf("health failed, from: %s error: %s", r.RemoteAddr, err)
