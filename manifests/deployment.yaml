@@ -4,7 +4,7 @@ metadata:
   name: todo-project-frontend
   namespace: todo-project
 spec:
-  replicas: 1
+  replicas: 4
   selector:
     matchLabels:
       app: todo-project-frontend
