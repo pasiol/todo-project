@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
   name: todo-project-frontend
-  namespace: exercise305
+  namespace: exercise405
 spec:
   replicas: 4
   selector:
