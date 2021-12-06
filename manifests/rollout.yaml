@@ -10,15 +10,17 @@ spec:
       app: todo-project-frontend
   strategy:
     canary:
-      maxUnavailable: 2
+      maxUnavailable: 1
       ScaleDownDelaySeconds: 30
       steps:
         - setWeight: 50
         - pause:
-            duration: 30m
-        - setWeight: 50
+            duration: 20m
+        - setWeight: 75
         - pause:
             duration: 5m
+        - pause:
+          duration: 5m
         - analysis:
             templates:
               - templateName: cpu-usage-10m
