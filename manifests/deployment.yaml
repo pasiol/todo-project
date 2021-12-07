@@ -25,7 +25,7 @@ spec:
                 path: "config.js"
       containers:
       - name: todo-project-frontend
-        image: gcr.io/PROJECT_ID/IMAGE
+        image: pasiol/todo-project@sha256:231a66aa3d889f72782daf21f4ce226839f6c687bff60aee2d05a101e45960d0
         volumeMounts:
           - mountPath: "/var/app/build/static/pv"
             name: static-files
@@ -36,7 +36,9 @@ spec:
           - name: APP_PORT
             value: "3000"
           - name: API_URL
-            value: "api.nomestyle.com:8888"
+            value: dwk.todo-project.local/todos
+          - name: API_HEALTH
+            value: todo-project-backend-svc:8888
         readinessProbe:
           initialDelaySeconds: 60
           periodSeconds: 10
