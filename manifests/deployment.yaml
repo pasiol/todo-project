@@ -25,7 +25,7 @@ spec:
                 path: "config.js"
       containers:
       - name: todo-project-frontend
-        image: pasiol/todo-project@sha256:231a66aa3d889f72782daf21f4ce226839f6c687bff60aee2d05a101e45960d0
+        image: IMAGE_PLACEHOLDER
         volumeMounts:
           - mountPath: "/var/app/build/static/pv"
             name: static-files
