@@ -5,4 +5,4 @@ resources:
 images:
 - name: IMAGE_PLACEHOLDER
   newName: pasiol/todo-project-frontend
-  newTag: d8b8f892504da9c098d1ec97c98d4cc8bcda3891
+  newTag: 2e2bd755d397a7a6bd7db4784e7e5f0164c6b1e9
