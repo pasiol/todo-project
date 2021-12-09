@@ -5,4 +5,4 @@ metadata:
   namespace: todo-project
 data:
   web.properties: |
-    window.API_URL="http://api.nomestyle.com:8888";
+    window.API_URL="http://dwk.todo-project.local";

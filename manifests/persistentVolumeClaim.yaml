@@ -3,9 +3,13 @@ kind: PersistentVolumeClaim
 metadata:
   name: todo-project-claim
   namespace: todo-project
+  labels:
+    type: local
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
+  storageClassName: todo-project
   resources:
     requests:
-      storage: 100Mi
+      storage: 10Mi
+  volumeName: todo-project-pv
