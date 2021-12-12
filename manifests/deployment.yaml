@@ -10,43 +10,45 @@ spec:
       app: todo-project-frontend
   template:
     metadata:
+      annotations:
+        linkerd.io/inject: enabled
       labels:
         app: todo-project-frontend
     spec:
-      volumes:
-        - name: static-files
-          persistentVolumeClaim:
-            claimName: todo-project-claim
-        - name: config
-          configMap:
-            name: web-config
-            items:
-              - key: "web.properties"
-                path: "config.js"
       containers:
-      - name: todo-project-frontend
-        image: IMAGE_PLACEHOLDER
-        volumeMounts:
-          - mountPath: "/var/app/build/static/pv"
-            name: static-files
-          - mountPath:  "/var/app/build/static/config.js"
-            name: config
-            subPath: "config.js"
-        env:
-          - name: APP_PORT
-            value: "3000"
-          - name: API_URL
-            value: dwk.todo-project.local/todos
-          - name: API_HEALTH
-            value: todo-project-backend-svc:8888
+      - env:
+        - name: APP_PORT
+          value: "3000"
+        - name: API_URL
+          value: dwk.todo-project.local/todos
+        - name: API_HEALTH
+          value: todo-project-backend-svc:8888
+        image: pasiol/todo-project-frontend:2e2bd755d397a7a6bd7db4784e7e5f0164c6b1e9
+        name: todo-project-frontend
         readinessProbe:
-          initialDelaySeconds: 60
-          periodSeconds: 10
           httpGet:
             path: /health
             port: 3000
+          initialDelaySeconds: 60
+          periodSeconds: 10
         resources:
           limits:
-            cpu: "200m"
-            memory: "10Mi"
-
+            cpu: 200m
+            memory: 10Mi
+        volumeMounts:
+        - mountPath: /var/app/build/static/pv
+          name: static-files
+        - mountPath: /var/app/build/static/config.js
+          name: config
+          subPath: config.js
+      volumes:
+      - name: static-files
+        persistentVolumeClaim:
+          claimName: todo-project-claim
+      - configMap:
+          items:
+          - key: web.properties
+            path: config.js
+          name: web-config
+        name: config
+---

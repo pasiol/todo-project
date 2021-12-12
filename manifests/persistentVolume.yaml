@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: todo-project-pv
+  namespace: todo-project
+  labels:
+    type: local
+spec:
+  capacity:
+    storage: 10Mi
+  storageClassName: todo-project
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: /tmp/kube
